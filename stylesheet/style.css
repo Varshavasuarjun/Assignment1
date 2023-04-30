@@ -22,7 +22,7 @@
 }
 /* sign */
    #log{
-     background: url(images/backgrunf.jpg); 
+     background: url("images/backgrunf.jpg"); 
     
    background-repeat: no-repeat; 
      background-size: cover; 
@@ -31,7 +31,7 @@
     
   }
   #sinn{
-    background-image: url(images/munnar.jpg);
+    background-image: url("images/munnar.jpg");
     background-repeat: no-repeat;
     background-position: fixed;
     background-size: contain;
