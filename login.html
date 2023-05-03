@@ -49,7 +49,7 @@
         <div class="col-lg-3   mt-5 pt-0  mb-5   bg-dark text-white" >
           
                     
-              <form class="form m-5 p-5 text-white " >
+              <form action="#" onsubmit=" return validate();" class="form m-5 p-5 text-white " >
                
             
                <div class="formhead ">
@@ -59,10 +59,12 @@
                 <div class="mb-3 ">
                    <label for="exampleInputtext" class="form-label"><b>User Name</b><br></label><br>
                    <input type="text" class="form-control" id="exampleInputtext" aria-describedby="textHelp">
-                </div>              
+                   <span id="error1"></span>
+                  </div>              
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label"><b>Password</b></label>
                    <input type="password" class="form-control" id="exampleInputPassword1">
+                   <span id="error2"></span>
                    <p>Forget Password?</p>
                 </div>
           
@@ -158,7 +160,46 @@
       <p class="text-center"> Copyright&copy2023  KeralaTourism</p>
       
      </footer>    
+     <script >
+      function validate(){
+      var name= document.getElementById('exampleInputtext');
+      var pass=document.getElementById("exampleInputPassword1") ;
+      var error1=document.getElementById("error1");
+      var error2=document.getElementById("error2");
+       let regexNm=/^([A-Za-z0-9]+)$/
+       let regexNu=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]+).{8,16}/
        
+       if (regexNm.test(exampleInputtext.value)) {
+          exampleInputtext.style.color="green";
+          //  error1.innerHTML="<span>valid</span>";
+          error1.style.color="green";
+          name.style.borderColor="green";
+          
+          
+        }
+       else{
+          error1.innerHTML="<span><I> Invalid format </I></span>";
+          error1.style.color="red";
+          name.style.borderColor="red";
+          // return false;
+          
+       }
+       if (regexNu.test(exampleInputPassword1.value)) {
+          exampleInputPassword1.style.color="green";
+          // error2.innerHTML="<span>valid</span>";
+          error2.style.color="green";
+          pass.style.borderColor="green";
+        }
+       else{
+          error2.innerHTML="<span><i>invalid format</i></span>";
+          error2.style.color="red";
+          pass.style.borderColor="red";
+          return false;
+          
+       }
+       alert("Please wait. YOU ARE LOGGING IN");
+      }
+  </script>
       
   </body>
 </html>
