@@ -49,7 +49,7 @@
           </div>
         
           <div class="col-lg-5" >
-            <form class="form m-4 p-5 text-white " id="sinn">
+            <form action="#" onsubmit=" return validate();" class="form m-4 p-5 text-white " id="sinn">
               <div class="formhead">
                 <h1>SIGN UP</h1>
               <P>Already a member? <a href="login.html">Log In</a></P>
@@ -57,30 +57,34 @@
               <div class="mb-3 ">
                 <label for="exampleInputtext" class="form-label"><b>First Name</b></label>
                 <input type="text" class="form-control" id="exampleInputtext" aria-describedby="textHelp">
-                
+                <span id="error1"></span>
               </div>
               <div class="mb-3 ">
                 <label for="exampleInputtext" class="form-label"><b>Last Name</b></label>
-                <input type="text" class="form-control" id="exampleInputtext" aria-describedby="textHelp">
-                
+                <input type="text" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                <span id="error1_1"></span>
               </div>
               <div class="mb-3 ">
                 <label for="exampleInputtext" class="form-label"><b>Phone Number</b></label>
-                <input type="text" class="form-control" id="exampleInputtext" aria-describedby="textHelp">
-                
+                <input type="text" class="form-control" id="exampleInputtext2" aria-describedby="textHelp">
+                <span id="error3"></span>
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label"><b>Email address</b></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-               </div>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span id="error4"></span>
+              </div>
               
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label"><b>Password</b></label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" class="form-control" id="exampleInputPassword">
+                <span id="error2"></span>
+                <span id="strngth" class="m-4 p-4" ></span>
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label"> <b>Re-enter your Password</b></label>
                 <input type="password" class="form-control" id="exampleInputPassword1">
+                <span id="error6"></span>
               </div>
               
               <button type="submit" class="btn btn-primary ">Sign In</button>
@@ -100,6 +104,126 @@
       <p class="text-center"> Copyright&copy2023  KeralaTourism</p>
       
      </footer>
+     <script >
+      function validate(){
+      var name= document.getElementById('exampleInputtext');
+      var name1= document.getElementById('exampleInputtext1');
+      var phn= document.getElementById ("exampleInputtext2");
+      var pass= document.getElementById("exampleInputPassword") ;
+      var pass1= document.getElementById("exampleInputPassword1") ;
+
+      var email= document.getElementById("exampleInputEmail1");
+      var error3= document.getElementById("error3");
+      var error4= document.getElementById("error4");
+      var error1=document.getElementById("error1");
+      var error1_1=document.getElementById("error1_1");
+      var error2=document.getElementById("error2");
+      var error6=document.getElementById("error6");
+       let regexNm=/^([A-Za-z0-9]+)$/
+      //  let regexNu=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]+).{8,16}/
+        let regexEm=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        let regexph= /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        let regexstr= /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/
+
+        let regexmed= /^([a-zA-Z0-9]+).{6,}/
+       if (regexNm.test(exampleInputtext.value)) {
+          exampleInputtext.style.color="green";
+          //  error1.innerHTML="<span>valid</span>";
+          error1.style.color="green";
+          name.style.borderColor="green";
+          
+          
+        }
+       else{
+          error1.innerHTML="<span><I> Invalid format </I></span>";
+          error1.style.color="red";
+          name.style.borderColor="red";
+           return false;
+          
+       }
+       if (regexNm.test(exampleInputtext1.value)) {
+          exampleInputtext1.style.color="green";
+          //  error1.innerHTML="<span>valid</span>";
+          error1_1.style.color="green";
+          name1.style.borderColor="green";
+          
+          
+        }
+       else{
+          error1_1.innerHTML="<span><I> Invalid format </I></span>";
+          error1_1.style.color="red";
+          name1.style.borderColor="red";
+           return false;
+          
+       }
+
+       if(regexph.test(phn.value)){
+          error3.innerHTML="<p>valid</p>";
+
+       }
+       else{
+       error3.innerHTML=" IN Valid format";
+       error3.style.color="red";
+       phn.style.borderColor="red";
+       return false;
+        }
+
+
+      if (regexEm.test(email.value)) {
+         email.style.backgroundColor="green" ;
+       }
+       else{
+          error4.innerHTML="<span > invalid format</span>";
+          email.style.borderColor="red";
+          return false;
+       }
+    
+
+
+
+
+       if (regexstr.test(pass.value)) {
+          exampleInputPassword.style.color="green";
+          strngth.innerHTML="<p>strong password</p>";
+          error2.style.color="green";
+          pass.style.borderColor="green";
+          strngth.style.backgroundColor="green";
+        }
+       else if (regexmed.test(pass.value)) {
       
+          exampleInputPassword.style.color="orange";
+          strngth.innerHTML="password strength: medium";
+          strngth.style.backgroundColor="orange";
+          error2.style.color="orange";
+          pass.style.borderColor="orange";
+          
+              
+          }
+
+        
+      else {
+
+        // error2.innerHTML="<span><i>invalid format</i></span>";
+          error2.style.color="red";
+          pass.style.borderColor="red";
+          
+          strngth.innerHTML="password is weak";
+          strngth.style.backgroundColor="red";
+          return false;
+          
+       }
+        if(pass.value==pass1.value) {
+        error6.innerHTML="<span><i>signing In</i></span>";
+
+        }
+        else{
+          error6.innerHTML="<span><i>password  doesnt match</i></span>";
+          error6.style.color="red";
+              return false;
+        }
+        
+        return true;
+      }
+  </script>  
   </body>
 </html>
