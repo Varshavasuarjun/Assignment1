@@ -204,20 +204,20 @@
       else {
 
         // error2.innerHTML="<span><i>invalid format</i></span>";
-          error2.style.color="red";
+          error2.style.color="white";
           pass.style.borderColor="red";
-          
+          error2.innerHTML="Password mut contain atleast 8 characters, an uppercase letter, a lowercase letter and a number";
           strngth.innerHTML="password is weak";
           strngth.style.backgroundColor="red";
           return false;
           
        }
         if(pass.value==pass1.value) {
-        error6.innerHTML="<span><i>signing In</i></span>";
+        error6.innerHTML="<span><b><i>signing In</i></b></span>";
 
         }
         else{
-          error6.innerHTML="<span><i>password  doesnt match</i></span>";
+          error6.innerHTML="<span><i><b>password  doesnt match</i></b></span>";
           error6.style.color="red";
               return false;
         }

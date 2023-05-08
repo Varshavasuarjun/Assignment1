@@ -70,7 +70,7 @@
           
           
                    <button type="submit" class="btn btn-primary ">Log In</button><br><br>
-                   <button type="reset"> reset</button>
+                  
               </form>
             </div>  
           
@@ -168,8 +168,11 @@
       var error2=document.getElementById("error2");
        let regexNm=/^([A-Za-z0-9]+)$/
        let regexNu=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]+).{8,16}/
+     
        
+
        if (regexNm.test(exampleInputtext.value)) {
+          
           exampleInputtext.style.color="green";
           //  error1.innerHTML="<span>valid</span>";
           error1.style.color="green";
@@ -177,13 +180,19 @@
           
           
         }
-       else{
-          error1.innerHTML="<span><I> Invalid format </I></span>";
+        
+
+       else {
+      
+          error1.innerHTML="<span><I> Invalid format: Field shouldnt be empty and only can have albhabets and digits </I></span>";
           error1.style.color="red";
           name.style.borderColor="red";
            return false;
           
        }
+       
+
+      //  }
        if (regexNu.test(exampleInputPassword1.value)) {
           exampleInputPassword1.style.color="green";
           // error2.innerHTML="<span>valid</span>";
@@ -191,7 +200,7 @@
           pass.style.borderColor="green";
         }
        else{
-          error2.innerHTML="<span><i>invalid format</i></span>";
+          error2.innerHTML="<span><i>invalid format-Password should contain an uppercase,a lowercase and a digit</i></span>";
           error2.style.color="red";
           pass.style.borderColor="red";
           return false;
